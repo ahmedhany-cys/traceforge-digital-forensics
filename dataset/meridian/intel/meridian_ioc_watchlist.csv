@@ -1,0 +1,5 @@
+indicator,type,confidence,source,description
+203.0.113.77,ipv4,medium,synthetic-intel-feed,Infrastructure associated with fictional 'MSync' tooling (training data)
+meridian-sync.example,domain,medium,synthetic-intel-feed,Domain family used by fictional 'MSync' tooling (training data)
+files.invoice-portal.example,domain,low,synthetic-intel-feed,Lure hosting domain reported in a fictional phishing campaign
+b52143d4a49a8f3f362012f22805ec0da015a4efe8968a6167f72b5b79263290,sha256,high,synthetic-intel-feed,SHA-256 of the synthetic 'Q3_Vendor_Invoice.pdf.exe' training sample

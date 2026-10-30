@@ -1,0 +1,12 @@
+timestamp_utc,device,action,protocol,src_ip,src_host,src_port,dst_ip,dst_port,bytes_sent,bytes_received,app,rule
+2026-10-14T12:32:44Z,fw-edge-01,allow,tcp,10.20.4.42,WS-FIN-042,51002,198.51.100.24,443,18204,412880,ssl,outbound-web
+2026-10-14T12:35:45Z,fw-edge-01,allow,tcp,10.20.4.42,WS-FIN-042,51010,192.0.2.80,443,6512,1201772,ssl,outbound-web
+2026-10-14T13:38:03Z,fw-edge-01,allow,tcp,10.20.4.42,WS-FIN-042,51244,198.51.100.24,443,22841,840119,ssl,outbound-web
+2026-10-14T13:41:45Z,fw-edge-01,allow,tcp,10.20.4.42,WS-FIN-042,51290,192.0.2.145,443,3208,0,ssl,outbound-web
+2026-10-14T13:43:14Z,fw-edge-01,allow,tcp,10.20.4.42,WS-FIN-042,52811,203.0.113.77,443,1844,6301,ssl,outbound-web
+2026-10-14T13:48:14Z,fw-edge-01,allow,tcp,10.20.4.42,WS-FIN-042,52866,203.0.113.77,443,1790,512,ssl,outbound-web
+2026-10-14T13:53:15Z,fw-edge-01,allow,tcp,10.20.4.42,WS-FIN-042,52930,203.0.113.77,443,1802,512,ssl,outbound-web
+2026-10-14T13:58:06Z,fw-edge-01,allow,tcp,10.20.4.42,WS-FIN-042,53120,203.0.113.77,443,48213904,9844,ssl,outbound-web
+2026-10-14T14:03:16Z,fw-edge-01,allow,tcp,10.20.4.42,WS-FIN-042,53188,203.0.113.77,443,1811,512,ssl,outbound-web
+2026-10-14T14:15:23Z,fw-edge-01,allow,tcp,10.20.4.42,WS-FIN-042,53301,198.51.100.24,443,9120,155032,ssl,outbound-web
+2026-10-14T14:22:40Z,fw-edge-01,deny,tcp,10.20.4.42,WS-FIN-042,53390,203.0.113.77,443,0,0,ssl,ir-block-203.0.113.77

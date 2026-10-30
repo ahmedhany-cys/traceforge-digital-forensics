@@ -1,0 +1,12 @@
+{
+  "name": "traceforge-screenshots",
+  "private": true,
+  "type": "module",
+  "description": "Captures documentation screenshots from a running TraceForge instance using a locally installed Chrome (no browser download).",
+  "scripts": {
+    "capture": "node capture.mjs"
+  },
+  "dependencies": {
+    "playwright-core": "1.48.2"
+  }
+}

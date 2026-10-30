@@ -1,0 +1,29 @@
+# Local deployment. Evidence, database and reports persist in the named volume.
+#   docker compose up --build -d
+#   docker compose exec traceforge python -m app.cli load-demo     # optional synthetic case
+#   docker compose exec traceforge cat /data/demo-credentials.txt
+services:
+  traceforge:
+    build: .
+    image: traceforge:local
+    ports:
+      - "127.0.0.1:8000:8000"   # bound to loopback only; put a TLS reverse proxy in front for remote access
+    environment:
+      TRACEFORGE_ENV: production
+      TRACEFORGE_DATA_DIR: /data
+      # Set to "true" when served over HTTPS (behind a TLS-terminating proxy).
+      TRACEFORGE_COOKIE_SECURE: "false"
+      TRACEFORGE_MAX_UPLOAD_BYTES: "52428800"
+    volumes:
+      - traceforge-data:/data
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    restart: unless-stopped
+
+volumes:
+  traceforge-data:

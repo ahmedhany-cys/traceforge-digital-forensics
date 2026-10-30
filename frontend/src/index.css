@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-ink-950 font-sans text-ink-100 antialiased;
+  font-feature-settings: "cv11", "ss01", "tnum";
+}
+
+::selection {
+  background: rgba(63, 208, 201, 0.3);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #263246 transparent;
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%238a98ae'%3E%3Cpath d='M5.5 7.5l4.5 4.5 4.5-4.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.4rem center;
+  background-size: 1rem;
+}
+
+.recharts-cartesian-axis-tick-value {
+  fill: #8a98ae;
+  font-size: 11px;
+}
+
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background: #0f1520 !important;
+  border: 1px solid #263246 !important;
+  border-radius: 6px;
+  font-size: 12px;
+}

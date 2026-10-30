@@ -1,0 +1,31 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Runtime data: evidence vault, database, generated reports, demo credentials
+backend/data/
+data/
+*.db
+*.db-wal
+*.db-shm
+demo-credentials.txt
+
+# Frontend
+node_modules/
+frontend/dist/
+frontend/coverage/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp

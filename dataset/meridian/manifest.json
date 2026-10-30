@@ -1,0 +1,72 @@
+{
+  "dataset": "Meridian Financial Services - suspected workstation compromise",
+  "case_number": "MFS-IR-2026-0147",
+  "synthetic": true,
+  "notice": "ALL DATA IS SIMULATED. Hosts, users, IPs (RFC 5737), and domains (.example, RFC 2606) are fictional.",
+  "generator": "dataset/generator/generate.py",
+  "files": [
+    {
+      "filename": "WS-FIN-042_Security.evtx",
+      "artifact_type": "windows_evtx",
+      "size_bytes": 135168,
+      "sha256": "9e3cef4b553e18d042913bd1d8c95fa87edbbf5ccadd22436df336eb1eba8582",
+      "description": "Windows Security event log exported from the workstation"
+    },
+    {
+      "filename": "WS-FIN-042_System.evtx",
+      "artifact_type": "windows_evtx",
+      "size_bytes": 69632,
+      "sha256": "7d93b3848c14c4b503aca89911e6bdebf2cb86b2e60881362138985992fcf84b",
+      "description": "Windows System event log exported from the workstation"
+    },
+    {
+      "filename": "WS-FIN-042_PowerShell-Operational.evtx",
+      "artifact_type": "windows_evtx",
+      "size_bytes": 69632,
+      "sha256": "0684f4f5a9a113feb921a52d84980bba5614c43cd7bd892c0cc40e2b8e727287",
+      "description": "Microsoft-Windows-PowerShell/Operational event log"
+    },
+    {
+      "filename": "Chrome_History_jmorales.sqlite",
+      "artifact_type": "browser_history",
+      "size_bytes": 36864,
+      "sha256": "e4f1ba61fdc84a7fc54e47fabb4b89579cfd5b07e7ea5657ed91ae31d1947b4e",
+      "description": "Chromium 'History' SQLite database for the user profile"
+    },
+    {
+      "filename": "fw-edge-01_connections.csv",
+      "artifact_type": "csv_log",
+      "size_bytes": 1378,
+      "sha256": "a9a2a38ba246fffea91beb28797a129eb778dc36a6a50fb69e3747525b34ad08",
+      "description": "Perimeter firewall connection log (UTC)"
+    },
+    {
+      "filename": "resolver_queries.log",
+      "artifact_type": "text_log",
+      "size_bytes": 1417,
+      "sha256": "8bca3a5c3e07dcb711e5c99bc572129e54152225562158c0523c16dabfda9491",
+      "description": "Internal DNS resolver query log (local time with offset)"
+    },
+    {
+      "filename": "edr_file_events.json",
+      "artifact_type": "json_events",
+      "size_bytes": 4036,
+      "sha256": "d2d1c0caf7fd0e6798326275f35dfad15fd1a93d1a445a2f8e4e78621e2a25d6",
+      "description": "EDR file telemetry export (local time with offset)"
+    },
+    {
+      "filename": "Q3_Vendor_Invoice.pdf.exe",
+      "artifact_type": "pe_executable",
+      "size_bytes": 54792,
+      "sha256": "b52143d4a49a8f3f362012f22805ec0da015a4efe8968a6167f72b5b79263290",
+      "description": "Executable recovered from the user's Downloads folder (synthetic, inert)"
+    },
+    {
+      "filename": "MFS_ReportViewer.exe",
+      "artifact_type": "pe_executable",
+      "size_bytes": 2048,
+      "sha256": "a900c7d1e2ed185e89ff95ccc059afefbf4678e764abe04eafebb67c5c09c520",
+      "description": "Known-good internal utility used as a control sample (synthetic, inert)"
+    }
+  ]
+}

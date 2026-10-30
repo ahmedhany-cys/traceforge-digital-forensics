@@ -1,0 +1,103 @@
+{
+  "export": {
+    "product": "MeridianEDR (fictional)",
+    "notice": "SIMULATED DATA generated for the TraceForge training scenario",
+    "exported_by": "ir-team",
+    "timezone_note": "event_time values are local time with explicit UTC offset"
+  },
+  "events": [
+    {
+      "event_time": "2026-10-14T08:39:59.050-04:00",
+      "host": "WS-FIN-042",
+      "user": "MERIDIANFS\\jmorales",
+      "event_type": "file_create",
+      "process_name": "chrome.exe",
+      "process_path": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+      "file_path": "C:\\Users\\jmorales\\Downloads\\Q3_Budget_Template.xlsx",
+      "sha256": "dc36f3d5d41a768c88c9613a6baa0784b5cdb6d39e8b25058f4e6ed44533deaa",
+      "size": 84220
+    },
+    {
+      "event_time": "2026-10-14T09:41:49.702-04:00",
+      "host": "WS-FIN-042",
+      "user": "MERIDIANFS\\jmorales",
+      "event_type": "file_create",
+      "process_name": "chrome.exe",
+      "process_path": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+      "file_path": "C:\\Users\\jmorales\\Downloads\\Q3_Vendor_Invoice.pdf.exe",
+      "sha256": "b52143d4a49a8f3f362012f22805ec0da015a4efe8968a6167f72b5b79263290",
+      "size": 54792,
+      "zone_identifier": {
+        "ZoneId": 3,
+        "ReferrerUrl": "https://mail.meridianfs.example/owa/",
+        "HostUrl": "https://files.invoice-portal.example/d/7f3a9c2e/Q3_Vendor_Invoice.pdf.exe"
+      }
+    },
+    {
+      "event_time": "2026-10-14T09:44:02.318-04:00",
+      "host": "WS-FIN-042",
+      "user": "MERIDIANFS\\jmorales",
+      "event_type": "file_create",
+      "process_name": "powershell.exe",
+      "process_path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "file_path": "C:\\ProgramData\\MSync\\msync.exe",
+      "sha256": "b52143d4a49a8f3f362012f22805ec0da015a4efe8968a6167f72b5b79263290",
+      "size": 54792
+    },
+    {
+      "event_time": "2026-10-14T09:52:10.120-04:00",
+      "host": "WS-FIN-042",
+      "user": "MERIDIANFS\\jmorales",
+      "event_type": "file_read",
+      "process_name": "msync.exe",
+      "process_path": "C:\\ProgramData\\MSync\\msync.exe",
+      "file_path": "C:\\Users\\jmorales\\Documents\\Confidential\\Q3_Board_Financials.xlsx"
+    },
+    {
+      "event_time": "2026-10-14T09:53:02.641-04:00",
+      "host": "WS-FIN-042",
+      "user": "MERIDIANFS\\jmorales",
+      "event_type": "file_read",
+      "process_name": "msync.exe",
+      "process_path": "C:\\ProgramData\\MSync\\msync.exe",
+      "file_path": "C:\\Users\\jmorales\\Documents\\Confidential\\Client_Portfolio_Export.csv"
+    },
+    {
+      "event_time": "2026-10-14T09:54:37.011-04:00",
+      "host": "WS-FIN-042",
+      "user": "MERIDIANFS\\jmorales",
+      "event_type": "file_read",
+      "process_name": "msync.exe",
+      "process_path": "C:\\ProgramData\\MSync\\msync.exe",
+      "file_path": "C:\\Users\\jmorales\\Documents\\Confidential\\Project_Atlas_MA_Term_Sheet.docx"
+    },
+    {
+      "event_time": "2026-10-14T09:55:47.383-04:00",
+      "host": "WS-FIN-042",
+      "user": "MERIDIANFS\\jmorales",
+      "event_type": "file_read",
+      "process_name": "msync.exe",
+      "process_path": "C:\\ProgramData\\MSync\\msync.exe",
+      "file_path": "C:\\Users\\jmorales\\Documents\\Confidential\\Wire_Approval_Matrix_2026.pdf"
+    },
+    {
+      "event_time": "2026-10-14T09:57:19.904-04:00",
+      "host": "WS-FIN-042",
+      "user": "MERIDIANFS\\jmorales",
+      "event_type": "file_create",
+      "process_name": "powershell.exe",
+      "process_path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "file_path": "C:\\ProgramData\\MSync\\q3_archive.zip",
+      "size": 48203664
+    },
+    {
+      "event_time": "2026-10-14T10:03:12.030-04:00",
+      "host": "WS-FIN-042",
+      "user": "MERIDIANFS\\jmorales",
+      "event_type": "file_delete",
+      "process_name": "powershell.exe",
+      "process_path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "file_path": "C:\\ProgramData\\MSync\\q3_archive.zip"
+    }
+  ]
+}
