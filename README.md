@@ -47,7 +47,7 @@ The answers live in different formats, clocks and timezones. TraceForge ingests 
 | `Q3_Vendor_Invoice.pdf.exe` | PE32+ | Inert sample with injection/network/persistence imports, a W+X high-entropy section, C2 strings |
 | `MFS_ReportViewer.exe` | PE32+ | Known-good control sample |
 
-The generator writes **real binary formats** (it includes a standards-based EVTX writer with valid chunk/file CRC32s and a PE builder) and is deterministic – regenerating produces byte-identical files whose hashes match [`manifest.json`](dataset/meridian/manifest.json). The ground-truth story is in [`SCENARIO.md`](dataset/meridian/SCENARIO.md).
+The generator writes **real binary formats** (it includes a standards-based EVTX writer with valid chunk/file CRC32s and a PE builder) and is deterministic: regenerating reproduces the files whose hashes are listed in [`manifest.json`](dataset/meridian/manifest.json) (byte-for-byte, except that the SQLite file embeds the local SQLite library version in its header, so for it the logical content is what is guaranteed to match). The ground-truth story is in [`SCENARIO.md`](dataset/meridian/SCENARIO.md).
 
 ## Capabilities
 

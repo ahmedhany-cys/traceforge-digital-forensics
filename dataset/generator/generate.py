@@ -6,7 +6,9 @@ Every artifact produced here is SIMULATED. Names, hosts, users, IP addresses
 and domains are fictional; public-looking addresses come from the IPv4
 documentation ranges (RFC 5737) and domains use the reserved ``.example``
 TLD (RFC 2606). The output is deterministic: running the generator twice
-produces byte-identical files, which the test-suite verifies.
+produces byte-identical files, which the test-suite verifies. (The SQLite
+history file embeds the SQLite library version in its header, so across
+platforms only its logical content is guaranteed to be identical.)
 """
 
 from __future__ import annotations

@@ -5,6 +5,7 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+import sqlite3
 
 import generate
 from app.forensics.browser import parse_chromium_history
@@ -19,7 +20,17 @@ def test_generator_is_deterministic_and_matches_committed_manifest(tmp_path):
     assert [f["sha256"] for f in m1["files"]] == [f["sha256"] for f in m2["files"]]
     committed = json.loads((DATASET / "manifest.json").read_text())
     assert committed["synthetic"] is True
-    assert {f["filename"]: f["sha256"] for f in committed["files"]} == {f["filename"]: f["sha256"] for f in m1["files"]}
+    expected = {f["filename"]: f["sha256"] for f in committed["files"]}
+    generated = {f["filename"]: f["sha256"] for f in m1["files"]}
+    assert expected.keys() == generated.keys()
+    for name in expected:
+        if name.endswith(".sqlite"):
+            # SQLite stores its library version in the file header, so raw bytes depend on the
+            # platform's SQLite build. Compare the logical database content instead.
+            dump = lambda p: list(sqlite3.connect(p).iterdump())
+            assert dump(tmp_path / "a" / "evidence" / name) == dump(EVIDENCE / name), name
+        else:
+            assert generated[name] == expected[name], name
 
 
 def test_cross_source_consistency(tmp_path):

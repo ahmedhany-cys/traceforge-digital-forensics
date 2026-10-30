@@ -18,7 +18,8 @@ cd traceforge-digital-forensics
 python3.12 -m venv .venv
 .venv/bin/pip install -r backend/requirements-dev.txt
 
-# Optional: regenerate the synthetic dataset (byte-identical to the committed copy)
+# Optional: regenerate the synthetic dataset (matches the committed copy; the SQLite file
+# may differ in header bytes depending on your SQLite version)
 .venv/bin/python dataset/generator/generate.py --out dataset/meridian
 
 # Load the demo case (creates demo users with random passwords)
